@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # PoGoGUI
 
 <img src="https://github.com/cschlaffner/PoGoGUI/blob/master/PoGoGUI/res/main/resources/pogo/pogo_180x180.png" height="180px">
@@ -27,3 +28,6 @@ Test examples, requirement specifications and time estimations are available her
 
 ## Contact
 Christoph Schlaffner (christoph.schlaffner@sanger.ac.uk)
+=======
+# PoGoGUI
+>>>>>>> origin/master
