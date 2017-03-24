@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 # PoGoGUI
-
-<img src="https://github.com/cschlaffner/PoGoGUI/blob/master/PoGoGUI/res/main/resources/pogo/pogo_180x180.png" height="180px">
 
 ## Overview
 In proteogenomic analyses it is essential to know the loci giving rise to peptides in order to improve genomic annotation and the functional characterization of protein products in their biological context. With next-generation sequencing of DNA and RNA for each sample studied by proteomic mass spectrometry integration and visualisation in a common coordinate system, i.e. the genome, is vital for systems biology. Advances in technology in mass spectrometry now allow almost complete quantification of the sample proteome. With research moving to protein quantitative trait loci (pQTL) to identify genomic alterations with functional effects on the proteome and the high complexity of combinations thereof integration and visualisation of protein and peptide quantification on genomic loci is paramount for this type of analysis. Furthermore, moving towards more personal multi-omics studies comparative visualisation of proteomic data on a genome has been lacking. Not only genomic variation affecting proteins have come into focus of functional integration studies but also post-translational modifications (PTM), the effect of single nucleotide variants and other alterations on PTMs and alternative modification loci, and the effects of alternative PTMs on protein abundance have become more a centre of attention for researchers. To facilitate this type of integration not only the genomic locations of modified peptides but specifically the genomic loci of associated with these modifications is required. Here, we provide a graphical user interface (GUI) for the mapping tool, PoGo, to quickly and efficiently allow access to PoGo for non-bioinformaticians. To further enable wide use of PoGo this GUI also integrated FileConverter providing conversion functionality for standardized mass spectrometry peptide identifications in mzid, mzIdentML and mzTab formats to the four column file format required by PoGo.
@@ -28,6 +25,3 @@ Test examples, requirement specifications and time estimations are available her
 
 ## Contact
 Christoph Schlaffner (christoph.schlaffner@sanger.ac.uk)
-=======
-# PoGoGUI
->>>>>>> origin/master
