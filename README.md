@@ -20,8 +20,5 @@ For additional information about parameters, output formats and the algorithm pl
 <li>You can load the generated BED and/or GTF files into a genome browser or create an web accessible track hub for your data through the TrackHub Generator (http://www.sanger.ac.uk/science/tools/trackhub-generator). Here the example is shown for visualisation in the UCSC genome browser.<br><newline>To load the data into the browser please follow these steps:</newline>
 <ol type='a'><li>Go to https://genome.ucsc.edu and navigate to 'My Data' -&gt; 'Custom Tracks'.</li><li>After clicking 'Choose File' select the file you want to upload and submit via the 'Submit' button.</li><li>You will be redirected to the 'Manage Custom Tracks' webpage.</li><li>Proceed from the 'Manage Custom Tracks' page by selecting 'Genome Browser' and confirm ('go').</li><li>Now you can browse the peptides mapped to their genomic loci on the reference genome.</li></ol></li></ol>
 
-### Test Examples
-Test examples, requirement specifications and time estimations are available here: ftp://ftp.sanger.ac.uk/pub/teams/17/software/PoGo/PoGo_Testprocedures.zip.
-
 ## Contact
 Christoph Schlaffner (christoph.schlaffner@sanger.ac.uk)
