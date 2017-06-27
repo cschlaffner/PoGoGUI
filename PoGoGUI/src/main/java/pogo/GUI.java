@@ -402,8 +402,8 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 								} catch (IOException e1) {
 									JOptionPane.showMessageDialog(GUI.this, "The conversion of " + filename + " failed.\nPlease ensure that the file has a valid format:\n  - *.mzid, *.mzId, *.mzidentml, *.mzIdentML, *.mztab, *.mzTab","Peptide File Conversion Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileconverterError_57x57.png")));
 								}
-							} else if (!extension.equalsIgnoreCase("txt") && !extension.equalsIgnoreCase("tsv")) {
-								JOptionPane.showMessageDialog(GUI.this, "No valid peptide input file found or file does not have valid file ending:\n  - *.mzid, *.mzId, *.mzidentml, *.mzIdentML, *.mztab, *.mzTab","Peptide File Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileError_57x57.png")));
+							} else if (!extension.equalsIgnoreCase("txt") && !extension.equalsIgnoreCase("tsv") && !extension.equalsIgnoreCase("pogo")) {
+								JOptionPane.showMessageDialog(GUI.this, "No valid peptide input file found or file does not have valid file ending:\n  - *.pogo, *.txt, *.tsv, *.mzid, *.mzId, *.mzidentml, *.mzIdentML, *.mztab, *.mzTab","Peptide File Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileError_57x57.png")));
 							}
 							if(!filename.equals("")) {
 								if(!files.equals("")) {
@@ -739,7 +739,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fc.setMultiSelectionEnabled(true);
-				FileNameExtensionFilter filter = new FileNameExtensionFilter("Peptide Identifications","txt","tsv","mzidetml","mzid","mztab");
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Peptide Identifications","pogo","txt","tsv","mzidetml","mzid","mztab");
 				fc.addChoosableFileFilter(filter);
 				fc.setAcceptAllFileFilterUsed(false);
 				int refVal = fc.showOpenDialog(GUI.this);

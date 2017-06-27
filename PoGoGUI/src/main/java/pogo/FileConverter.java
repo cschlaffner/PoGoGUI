@@ -32,7 +32,7 @@ public class FileConverter {
 		String extension = name.substring(name.lastIndexOf(".")+1);
 		name = name.substring(0,name.lastIndexOf("."));
 		
-		String outfilename = outname + File.separator + name + ".txt";
+		String outfilename = outname + File.separator + name + ".pogo";
 		
 		Map<String, Map<String,Pair<Integer, Double>>> map = new HashMap<String, Map<String, Pair<Integer,Double>>>();
 		
