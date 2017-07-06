@@ -47,6 +47,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.JComboBox;
 
 public class GUI extends JFrame implements ItemListener, ActionListener {
 
@@ -110,13 +111,40 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		Species species[] = new Species[25];
+		species[0] = new Species("Homo sapiens","Human");
+		species[1] = new Species("Mus musculus","Mouse");
+		species[2] = new Species("Bos taurus","Cow");
+		species[3] = new Species("Callithrix jacchus","Marmoset");
+		species[4] = new Species("Canis lupus familiaris","Dog");
+		species[5] = new Species("Chlorocebus sabaeus","Vervet_AGM");
+		species[6] = new Species("Ciona intestinalis","C.intestinalis");
+		species[7] = new Species("Equus caballus","Horse");
+		species[8] = new Species("Felis catus","Cat");
+		species[9] = new Species("Gallus gallus","Chicken");
+		species[10] = new Species("Gorilla gorilla gorilla","Gorilla");
+		species[11] = new Species("Macaca mulatta","Macaque");
+		species[12] = new Species("Meleagris gallopavo","Turkey");
+		species[13] = new Species("Monodelphis domestica","Opossum");
+		species[14] = new Species("Ornithorhynchus anatinus","Platypus");
+		species[15] = new Species("Oryctolagus cuniculus","Rabbit");
+		species[16] = new Species("Oryzias latipes","Medaka");
+		species[17] = new Species("Ovis aries","Sheep");
+		species[18] = new Species("Pan troglodytes","Chimp");
+		species[19] = new Species("Papio anubis","Olive baboon");
+		species[20] = new Species("Pongo abelii","Orangutan");
+		species[21] = new Species("Rattus norvegicus","Rat");
+		species[22] = new Species("Sus scrofa","Pig");
+		species[23] = new Species("Taeniopygia guttata","Zebra Finch");
+		species[24] = new Species("Tetradon nigroviridid","Tetradon");
 				
 		this.setIconImages(pogoimages);
 		
 		fc.setCurrentDirectory(new File(System.getProperty("user.home")));
 			
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 624, 342);
+		setBounds(100, 100, 624, 391);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -128,7 +156,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
 		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblOptions = new JLabel("Options");
@@ -308,6 +336,67 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		buttonGroup.add(rdbtnI);
 		buttonGroup.add(radioButton);
 		
+		JLabel lblSpecies = new JLabel("Species");
+		GridBagConstraints gbc_lblSpecies = new GridBagConstraints();
+		gbc_lblSpecies.anchor = GridBagConstraints.WEST;
+		gbc_lblSpecies.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSpecies.gridx = 0;
+		gbc_lblSpecies.gridy = 8;
+		panel.add(lblSpecies, gbc_lblSpecies);
+		
+		final JComboBox comboBox = new JComboBox(species);
+		comboBox.setSelectedItem("Human (Homo sapiens)");
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.gridwidth = 2;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 1;
+		gbc_comboBox.gridy = 8;
+		panel.add(comboBox, gbc_comboBox);
+		
+		JLabel lblSourceName = new JLabel("Source Name");
+		GridBagConstraints gbc_lblSourceName = new GridBagConstraints();
+		gbc_lblSourceName.anchor = GridBagConstraints.EAST;
+		gbc_lblSourceName.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSourceName.gridx = 0;
+		gbc_lblSourceName.gridy = 9;
+		panel.add(lblSourceName, gbc_lblSourceName);
+		
+		textField_3 = new JTextField();
+		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
+		gbc_textField_3.gridwidth = 2;
+		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_3.gridx = 1;
+		gbc_textField_3.gridy = 9;
+		panel.add(textField_3, gbc_textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel label = new JLabel();
+		GridBagConstraints gbc_label = new GridBagConstraints();
+		gbc_label.gridheight = 2;
+		gbc_label.insets = new Insets(0, 0, 0, 5);
+		gbc_label.gridx = 0;
+		gbc_label.gridy = 10;
+		panel.add(label, gbc_label);
+		label.setIcon(new ImageIcon(GUI.class.getResource("pogo_57x57.png")));
+		
+		JLabel lblPogowebsite = new JLabel("<html> <a href=\"\">PoGo webpage</a></html>");
+		lblPogowebsite.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		lblPogowebsite.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		lblPogowebsite.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				try {
+					Desktop.getDesktop().browse(new URI("http://www.sanger.ac.uk/science/tools/pogo"));
+				} catch (URISyntaxException e1) {
+					e1.printStackTrace();
+				} catch (IOException e2) {
+					e2.printStackTrace();
+				}
+			}
+		});
+		
 		final JButton btnNewButton = new JButton("START");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -355,7 +444,9 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 					mismatches = 1;
 				}
 				boolean mismatchmode = rdbtnI.isSelected();
-				
+				String selectedSpeciesName = "homo sapiens";
+				Species selectedSpecies = (Species)comboBox.getSelectedItem();
+				selectedSpeciesName = selectedSpecies.getScientificName();
 				
 				String command = "";
 				boolean able_to_run_pogo = false;
@@ -430,6 +521,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 				if(mismatchmode) {
 					command = command + " -mmmode TRUE";
 				}
+				command = command + " -species " + selectedSpeciesName;
 				
 				if(able_to_run_pogo && able_to_run_fasta && able_to_run_gtf && able_to_run_input) {
 					
@@ -485,6 +577,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 							}
 						};
 						Worker myworker = new Worker();
+						System.out.println(command);
 						myworker.setCommand(command);
 						myworker.execute(); 
 						mapping.setVisible(true);
@@ -501,65 +594,18 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 				}
 			}
 		});
-		
-		JLabel lblSourceName = new JLabel("Source Name");
-		GridBagConstraints gbc_lblSourceName = new GridBagConstraints();
-		gbc_lblSourceName.anchor = GridBagConstraints.EAST;
-		gbc_lblSourceName.insets = new Insets(0, 0, 5, 5);
-		gbc_lblSourceName.gridx = 0;
-		gbc_lblSourceName.gridy = 8;
-		panel.add(lblSourceName, gbc_lblSourceName);
-		
-		textField_3 = new JTextField();
-		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
-		gbc_textField_3.gridwidth = 2;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 8;
-		panel.add(textField_3, gbc_textField_3);
-		textField_3.setColumns(10);
-		
-		JPanel panel_2 = new JPanel();
-		GridBagConstraints gbc_panel_2 = new GridBagConstraints();
-		gbc_panel_2.gridheight = 2;
-		gbc_panel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_panel_2.fill = GridBagConstraints.BOTH;
-		gbc_panel_2.gridx = 0;
-		gbc_panel_2.gridy = 9;
-		panel.add(panel_2, gbc_panel_2);
-		
-		JLabel label = new JLabel();
-		label.setIcon(new ImageIcon(GUI.class.getResource("pogo_57x57.png")));
-		panel_2.add(label);
 		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 14));
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 0);
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.gridwidth = 2;
 		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 9;
+		gbc_btnNewButton.gridy = 10;
 		panel.add(btnNewButton, gbc_btnNewButton);
-		
-		JLabel lblPogowebsite = new JLabel("<html> <a href=\"\">PoGo webpage</a></html>");
-		lblPogowebsite.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		lblPogowebsite.setCursor(new Cursor(Cursor.HAND_CURSOR));
-		lblPogowebsite.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				try {
-					Desktop.getDesktop().browse(new URI("http://www.sanger.ac.uk/science/tools/pogo"));
-				} catch (URISyntaxException e1) {
-					e1.printStackTrace();
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-			}
-		});
 		GridBagConstraints gbc_lblPogowebsite = new GridBagConstraints();
 		gbc_lblPogowebsite.anchor = GridBagConstraints.EAST;
 		gbc_lblPogowebsite.gridx = 2;
-		gbc_lblPogowebsite.gridy = 10;
+		gbc_lblPogowebsite.gridy = 11;
 		panel.add(lblPogowebsite, gbc_lblPogowebsite);
 		
 		JPanel panel_1 = new JPanel();
