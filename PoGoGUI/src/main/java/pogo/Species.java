@@ -4,10 +4,12 @@ public class Species {
 
 	private String scientificname;
 	private String commonname;
+	private int taxonomyId;
 	
-	public Species(String sciname, String comname) {
+	public Species(String sciname, String comname, int taxid) {
 		this.scientificname = sciname;
 		this.commonname = comname;
+		this.taxonomyId = taxid;
 	}
 	
 	public String getScientificName() {
@@ -19,7 +21,7 @@ public class Species {
 	}
 	
 	public String toString() {
-		return commonname + " (" + scientificname + ")";
+		return commonname + " (" + scientificname + " ," + taxonomyId + ")";
 	}
 	
 }

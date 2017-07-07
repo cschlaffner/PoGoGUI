@@ -113,31 +113,31 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		}
 		
 		Species species[] = new Species[25];
-		species[0] = new Species("Homo sapiens","Human");
-		species[1] = new Species("Mus musculus","Mouse");
-		species[2] = new Species("Bos taurus","Cow");
-		species[3] = new Species("Callithrix jacchus","Marmoset");
-		species[4] = new Species("Canis lupus familiaris","Dog");
-		species[5] = new Species("Chlorocebus sabaeus","Vervet_AGM");
-		species[6] = new Species("Ciona intestinalis","C.intestinalis");
-		species[7] = new Species("Equus caballus","Horse");
-		species[8] = new Species("Felis catus","Cat");
-		species[9] = new Species("Gallus gallus","Chicken");
-		species[10] = new Species("Gorilla gorilla gorilla","Gorilla");
-		species[11] = new Species("Macaca mulatta","Macaque");
-		species[12] = new Species("Meleagris gallopavo","Turkey");
-		species[13] = new Species("Monodelphis domestica","Opossum");
-		species[14] = new Species("Ornithorhynchus anatinus","Platypus");
-		species[15] = new Species("Oryctolagus cuniculus","Rabbit");
-		species[16] = new Species("Oryzias latipes","Medaka");
-		species[17] = new Species("Ovis aries","Sheep");
-		species[18] = new Species("Pan troglodytes","Chimp");
-		species[19] = new Species("Papio anubis","Olive baboon");
-		species[20] = new Species("Pongo abelii","Orangutan");
-		species[21] = new Species("Rattus norvegicus","Rat");
-		species[22] = new Species("Sus scrofa","Pig");
-		species[23] = new Species("Taeniopygia guttata","Zebra Finch");
-		species[24] = new Species("Tetradon nigroviridid","Tetradon");
+		species[0] = new Species("Homo sapiens","Human",9606);
+		species[1] = new Species("Mus musculus","Mouse",10090);
+		species[2] = new Species("Bos taurus","Cow",9913);
+		species[3] = new Species("Callithrix jacchus","Marmoset",9483);
+		species[4] = new Species("Canis lupus familiaris","Dog",9615);
+		species[5] = new Species("Chlorocebus sabaeus","Vervet_AGM",60711);
+		species[6] = new Species("Ciona intestinalis","C.intestinalis",7719);
+		species[7] = new Species("Equus caballus","Horse",9796);
+		species[8] = new Species("Felis catus","Cat",9685);
+		species[9] = new Species("Gallus gallus","Chicken",9031);
+		species[10] = new Species("Gorilla gorilla gorilla","Gorilla",9595);
+		species[11] = new Species("Macaca mulatta","Macaque",9544);
+		species[12] = new Species("Meleagris gallopavo","Turkey",9103);
+		species[13] = new Species("Monodelphis domestica","Opossum",13616);
+		species[14] = new Species("Ornithorhynchus anatinus","Platypus",9258);
+		species[15] = new Species("Oryctolagus cuniculus","Rabbit",9986);
+		species[16] = new Species("Oryzias latipes","Medaka",8090);
+		species[17] = new Species("Ovis aries","Sheep",9940);
+		species[18] = new Species("Pan troglodytes","Chimpazee",9598);
+		species[19] = new Species("Papio anubis","Olive baboon",9555);
+		species[20] = new Species("Pongo abelii","Orangutan",9601);
+		species[21] = new Species("Rattus norvegicus","Rat",10116);
+		species[22] = new Species("Sus scrofa","Pig",9823);
+		species[23] = new Species("Taeniopygia guttata","Zebra Finch",59729);
+		species[24] = new Species("Tetraodon nigroviridid","Tetraodon",99883);
 				
 		this.setIconImages(pogoimages);
 		
