@@ -21,7 +21,7 @@ public class Species {
 	}
 	
 	public String toString() {
-		return commonname + " (" + scientificname + " ," + taxonomyId + ")";
+		return commonname + " (" + scientificname + ", " + taxonomyId + ")";
 	}
 	
 }

@@ -49,7 +49,7 @@
   		   		</descriptorRefs>
   		   		<archive>
   		   			<manifest>
-  		   				<mainClass>uk.ac.cam.GUI</mainClass>
+  		   				<mainClass>pogo.GUI</mainClass>
   		   			</manifest>
   		   		</archive>
   		   	</configuration>
