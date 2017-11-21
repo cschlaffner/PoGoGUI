@@ -344,7 +344,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		gbc_lblSpecies.gridy = 8;
 		panel.add(lblSpecies, gbc_lblSpecies);
 		
-		final JComboBox comboBox = new JComboBox(species);
+		final JComboBox<Species> comboBox = new JComboBox<Species>(species);
 		comboBox.setSelectedItem("Human (Homo sapiens)");
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.gridwidth = 2;
@@ -492,6 +492,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 									filename = convertToPoGoInput(filename);
 								} catch (IOException e1) {
 									JOptionPane.showMessageDialog(GUI.this, "The conversion of " + filename + " failed.\nPlease ensure that the file has a valid format:\n  - *.mzid, *.mzId, *.mzidentml, *.mzIdentML, *.mztab, *.mzTab","Peptide File Conversion Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileconverterError_57x57.png")));
+									filename = "";
 								}
 							} else if (!extension.equalsIgnoreCase("txt") && !extension.equalsIgnoreCase("tsv") && !extension.equalsIgnoreCase("pogo")) {
 								JOptionPane.showMessageDialog(GUI.this, "No valid peptide input file found or file does not have valid file ending:\n  - *.pogo, *.txt, *.tsv, *.mzid, *.mzId, *.mzidentml, *.mzIdentML, *.mztab, *.mzTab","Peptide File Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileError_57x57.png")));
@@ -858,6 +859,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 	public String convertToPoGoInput(String filename) throws IOException {
 		
 		final ArrayList<BufferedImage> fileconverterimages = new ArrayList<BufferedImage>();
+		String oldfilename = filename;
 		
 		try {
 			fileconverterimages.add(ImageIO.read(GUI.class.getResourceAsStream("fileconverter.png")));
@@ -918,15 +920,21 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		};
 		Worker myworker = new Worker();
 		myworker.setFilename(filename);
-		myworker.execute(); 
-		mapping.setVisible(true);
 		try{
+			myworker.execute(); 
+			mapping.setVisible(true);
+		
 			myworker.get();
 			filename = myworker.getFilename();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
-		return filename;
+		if(oldfilename==filename) {
+			filename="";
+			throw new IOException();
+		} else {
+			return filename;
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
