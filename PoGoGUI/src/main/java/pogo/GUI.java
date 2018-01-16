@@ -381,14 +381,14 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		panel.add(label, gbc_label);
 		label.setIcon(new ImageIcon(GUI.class.getResource("pogo_57x57.png")));
 		
-		JLabel lblPogowebsite = new JLabel("<html> <a href=\"\">PoGo webpage</a></html>");
+		JLabel lblPogowebsite = new JLabel("<html> <a href=\"\">PoGo github page</a></html>");
 		lblPogowebsite.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		lblPogowebsite.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		lblPogowebsite.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try {
-					Desktop.getDesktop().browse(new URI("http://www.sanger.ac.uk/science/tools/pogo"));
+					Desktop.getDesktop().browse(new URI("https://github.com/cschlaffner/PoGoGUI"));
 				} catch (URISyntaxException e1) {
 					e1.printStackTrace();
 				} catch (IOException e2) {
@@ -453,7 +453,12 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 				boolean able_to_run_fasta = false;
 				boolean able_to_run_gtf = false;
 				boolean able_to_run_input = false;
-				if(pogo.endsWith("PoGo") || pogo.endsWith("pogo") || pogo.endsWith("PoGo.exe") || pogo.endsWith("pogo.exe")) {
+				
+				File execfile = new File(pogo);
+				boolean exec = execfile.canExecute();
+				String execfilename = execfile.getName();
+				
+				if(exec && (execfilename.startsWith("PoGo") || execfilename.startsWith("pogo") || (execfilename.startsWith("PoGo") && execfilename.endsWith("exe")) || (execfilename.startsWith("pogo") && execfilename.endsWith("exe")))) {
 					File f = new File(pogo);
 					if(f.exists() && !f.isDirectory()) {
 						command = command + pogo + " ";
