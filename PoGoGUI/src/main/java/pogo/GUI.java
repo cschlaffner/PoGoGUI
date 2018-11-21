@@ -62,6 +62,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JTextField textField_genome;
 	private JList<String> list;
 	private DefaultListModel<String> listModel;
 	private JButton btnDelete;
@@ -111,33 +112,6 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		Species species[] = new Species[25];
-		species[0] = new Species("Homo sapiens","Human",9606);
-		species[1] = new Species("Mus musculus","Mouse",10090);
-		species[2] = new Species("Bos taurus","Cow",9913);
-		species[3] = new Species("Callithrix jacchus","Marmoset",9483);
-		species[4] = new Species("Canis lupus familiaris","Dog",9615);
-		species[5] = new Species("Chlorocebus sabaeus","Vervet_AGM",60711);
-		species[6] = new Species("Ciona intestinalis","C.intestinalis",7719);
-		species[7] = new Species("Equus caballus","Horse",9796);
-		species[8] = new Species("Felis catus","Cat",9685);
-		species[9] = new Species("Gallus gallus","Chicken",9031);
-		species[10] = new Species("Gorilla gorilla gorilla","Gorilla",9595);
-		species[11] = new Species("Macaca mulatta","Macaque",9544);
-		species[12] = new Species("Meleagris gallopavo","Turkey",9103);
-		species[13] = new Species("Monodelphis domestica","Opossum",13616);
-		species[14] = new Species("Ornithorhynchus anatinus","Platypus",9258);
-		species[15] = new Species("Oryctolagus cuniculus","Rabbit",9986);
-		species[16] = new Species("Oryzias latipes","Medaka",8090);
-		species[17] = new Species("Ovis aries","Sheep",9940);
-		species[18] = new Species("Pan troglodytes","Chimpazee",9598);
-		species[19] = new Species("Papio anubis","Olive baboon",9555);
-		species[20] = new Species("Pongo abelii","Orangutan",9601);
-		species[21] = new Species("Rattus norvegicus","Rat",10116);
-		species[22] = new Species("Sus scrofa","Pig",9823);
-		species[23] = new Species("Taeniopygia guttata","Zebra Finch",59729);
-		species[24] = new Species("Tetraodon nigroviridid","Tetraodon",99883);
 				
 		this.setIconImages(pogoimages);
 		
@@ -154,9 +128,9 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		contentPane.add(panel, BorderLayout.EAST);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gbl_panel.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{1.0, 1.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0};
 		panel.setLayout(gbl_panel);
 		
 		JLabel lblOptions = new JLabel("Options");
@@ -336,7 +310,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		buttonGroup.add(rdbtnI);
 		buttonGroup.add(radioButton);
 		
-		JLabel lblSpecies = new JLabel("Species");
+		JLabel lblSpecies = new JLabel("Genome");
 		GridBagConstraints gbc_lblSpecies = new GridBagConstraints();
 		gbc_lblSpecies.anchor = GridBagConstraints.WEST;
 		gbc_lblSpecies.insets = new Insets(0, 0, 5, 5);
@@ -344,31 +318,52 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		gbc_lblSpecies.gridy = 8;
 		panel.add(lblSpecies, gbc_lblSpecies);
 		
-		final JComboBox<Species> comboBox = new JComboBox<Species>(species);
-		comboBox.setSelectedItem("Human (Homo sapiens)");
-		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.gridwidth = 2;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 1;
-		gbc_comboBox.gridy = 8;
-		panel.add(comboBox, gbc_comboBox);
+		textField_genome = new JTextField();
+		GridBagConstraints gbc_textField_genome = new GridBagConstraints();
+		gbc_textField_genome.gridwidth = 2;
+		gbc_textField_genome.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_genome.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_genome.gridx = 1;
+		gbc_textField_genome.gridy = 8;
+		panel.add(textField_genome, gbc_textField_genome);
+		
+		JButton btnNewButton_1 = new JButton("Select Genome");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fc.setMultiSelectionEnabled(false);
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("Genome sequence in FASTA format","fa","fasta");
+				fc.addChoosableFileFilter(filter);
+				fc.setAcceptAllFileFilterUsed(false);
+				int refVal = fc.showOpenDialog(GUI.this);
+				if(refVal == JFileChooser.APPROVE_OPTION) {
+					File file = fc.getSelectedFile();
+					textField_genome.setText(file.getAbsolutePath());
+				}
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnNewButton_1.gridwidth = 2;
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 0);
+		gbc_btnNewButton_1.gridx = 1;
+		gbc_btnNewButton_1.gridy = 9;
+		panel.add(btnNewButton_1, gbc_btnNewButton_1);
 		
 		JLabel lblSourceName = new JLabel("Source Name");
 		GridBagConstraints gbc_lblSourceName = new GridBagConstraints();
 		gbc_lblSourceName.anchor = GridBagConstraints.EAST;
 		gbc_lblSourceName.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSourceName.gridx = 0;
-		gbc_lblSourceName.gridy = 9;
+		gbc_lblSourceName.gridy = 10;
 		panel.add(lblSourceName, gbc_lblSourceName);
 		
 		textField_3 = new JTextField();
 		GridBagConstraints gbc_textField_3 = new GridBagConstraints();
 		gbc_textField_3.gridwidth = 2;
-		gbc_textField_3.insets = new Insets(0, 0, 5, 5);
+		gbc_textField_3.insets = new Insets(0, 0, 5, 0);
 		gbc_textField_3.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_3.gridx = 1;
-		gbc_textField_3.gridy = 9;
+		gbc_textField_3.gridy = 10;
 		panel.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
 		
@@ -377,7 +372,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		gbc_label.gridheight = 2;
 		gbc_label.insets = new Insets(0, 0, 0, 5);
 		gbc_label.gridx = 0;
-		gbc_label.gridy = 10;
+		gbc_label.gridy = 11;
 		panel.add(label, gbc_label);
 		label.setIcon(new ImageIcon(GUI.class.getResource("pogo_57x57.png")));
 		
@@ -403,6 +398,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 				String pogo = textField.getText();
 				String fasta = textField_1.getText();
 				String gtf = textField_2.getText();
+				String genomeFasta = textField_genome.getText();
 
 				String source = textField_3.getText();
 				String outf = "";
@@ -444,9 +440,6 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 					mismatches = 1;
 				}
 				boolean mismatchmode = rdbtnI.isSelected();
-				String selectedSpeciesName = "homo sapiens";
-				Species selectedSpecies = (Species)comboBox.getSelectedItem();
-				selectedSpeciesName = selectedSpecies.getScientificName();
 				
 				String command = "";
 				boolean able_to_run_pogo = false;
@@ -484,6 +477,14 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 					} else {
 						JOptionPane.showMessageDialog(GUI.this, "No valid GTF file found or file does not have valid file ending:\n  - *.gtf, *.GTF\nPlease specify.","GTF File Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileError_57x57.png")));
 					}
+				}
+				if(genomeFasta.endsWith("fasta") || genomeFasta.endsWith("fa") || genomeFasta.endsWith("FASTA")) {
+					File f = new File(genomeFasta);
+					if(f.exists() && !f.isDirectory()) {
+						command = command + "-genome " + genomeFasta + " ";
+					} else {
+							JOptionPane.showMessageDialog(GUI.this, "No valid Genome FASTA file found or file does not have valid file ending:\n  - *.fa, *.fasta, *.FASTA\nContinuing without file.","FASTA File Error",JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("fileError_57x57.png")));
+						}
 				}
 				if(!listModel.isEmpty()) {
 					String files = "";
@@ -527,7 +528,6 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 				if(mismatchmode) {
 					command = command + " -mmmode TRUE";
 				}
-				command = command + " -species " + selectedSpeciesName;
 				
 				if(able_to_run_pogo && able_to_run_fasta && able_to_run_gtf && able_to_run_input) {
 					
@@ -537,7 +537,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 						mapping2.setMessageType(JOptionPane.INFORMATION_MESSAGE);
 						mapping2.setOptions(new Object[] {});
 						mapping2.setIcon(new ImageIcon(GUI.class.getResource("pogo_57x57.png")));
-						mapping2.setMessage("PoGo is mapping your peptides.\nPlease wait.");
+						mapping2.setMessage("PoGo is mapping your peptides.\nPlease wait.\n" + command);
 						
 						final JDialog mapping = mapping2.createDialog(GUI.this, "PoGo is working hard...");
 						mapping.setIconImages(pogoimages);
@@ -562,7 +562,7 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 									pr.waitFor();
 									int exitcode = pr.exitValue();
 									if(exitcode!=0) {
-										JOptionPane.showMessageDialog(GUI.this, "PoGo terminated unexpectedly.\nPlease check input files and restart.", "PoGo Execution Error", JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("pogoError_57x57.png")));
+										JOptionPane.showMessageDialog(GUI.this, "PoGo terminated unexpectedly.\nPlease check input files and restart. Please make sure that protein sequences are in FASTA format, annotation is in GTF format and peptide input files in the 4 column tab-separated format *.tsv, *.txt, or *.pogo", "PoGo Execution Error", JOptionPane.ERROR_MESSAGE, new ImageIcon(GUI.class.getResource("pogoError_57x57.png")));
 									}
 								} catch (IOException e1) {
 									// TODO Auto-generated catch block
@@ -606,12 +606,12 @@ public class GUI extends JFrame implements ItemListener, ActionListener {
 		gbc_btnNewButton.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnNewButton.gridwidth = 2;
 		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 10;
+		gbc_btnNewButton.gridy = 11;
 		panel.add(btnNewButton, gbc_btnNewButton);
 		GridBagConstraints gbc_lblPogowebsite = new GridBagConstraints();
 		gbc_lblPogowebsite.anchor = GridBagConstraints.EAST;
 		gbc_lblPogowebsite.gridx = 2;
-		gbc_lblPogowebsite.gridy = 11;
+		gbc_lblPogowebsite.gridy = 12;
 		panel.add(lblPogowebsite, gbc_lblPogowebsite);
 		
 		JPanel panel_1 = new JPanel();
